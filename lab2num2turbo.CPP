@@ -25,7 +25,7 @@ return price;
 }
 
 float convert_miles (float km) {
-    float mi = km / 1.60934;
+    float mi = km * 1.60934;
     return mi;
 }
 
