@@ -46,7 +46,7 @@ return fullTanks;
 
 float get_fuelCost (float price, float fullTanks1) {
     float fuel_cost = fullTanks1 * price;
-    float rnd_fuelCost = floor((fuel_cost * 100)) + 0.5 / 100;
+    float rnd_fuelCost = floor((fuel_cost * 100) + 0.5) / 100;
 return rnd_fuelCost;
 }
 
