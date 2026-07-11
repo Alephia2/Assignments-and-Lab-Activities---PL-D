@@ -34,8 +34,8 @@ float get_flight_time (float distance, float velocity, float angle_in_radians) {
     return time;
 }
 
-float get_max_height (float velocity, float angle_in_radians, float time) {
-    float max_height = velocity * sin(angle_in_radians) * time - (-gravity * pow(time, 2)) / 2;
+float get_height (float velocity, float angle_in_radians, float time) {
+    float max_height = velocity * sin(angle_in_radians) * time - (gravity * pow(time, 2)) / 2;
     return max_height;
 }
 
@@ -57,7 +57,7 @@ int main () {
     angle_in_degrees = ask_for_angle (angle_in_degrees);
     angle_in_radians = get_angle_in_radians (angle_in_degrees);
     time = get_flight_time (distance, velocity, angle_in_radians);
-    max_height = get_max_height (velocity, angle_in_radians, time);
+    max_height = get_height (velocity, angle_in_radians, time);
 
     display_results (distance, velocity, angle_in_degrees, angle_in_radians, time, max_height);
 
