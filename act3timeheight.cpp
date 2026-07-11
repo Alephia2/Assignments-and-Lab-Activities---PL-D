@@ -7,13 +7,13 @@
 using namespace std;
 
 float ask_for_distance (float distance) {
-    cout << "Enter distance in meters: ";
+    cout << "Enter distance in feet: ";
     cin >> distance;
     return distance;
 }
 
 float ask_for_velocity (float velocity) {
-    cout << "Enter velocity in m/s: ";
+    cout << "Enter velocity in f/s: ";
     cin >> velocity;
     return velocity;
 }
@@ -30,22 +30,22 @@ float get_angle_in_radians (float angle_in_degrees) {
 }
 
 float get_flight_time (float distance, float velocity, float angle_in_radians) {
-    float time = (2 * sin(angle_in_radians) * velocity) / gravity;
+    float time = distance / (velocity * cos(angle_in_radians));
     return time;
 }
 
 float get_max_height (float velocity, float angle_in_radians, float time) {
-    float max_height = (velocity * sin(angle_in_radians) - gravity * pow(time, 2)) / 2;
+    float max_height = (velocity * sin(angle_in_radians) - (-gravity * pow(time, 2))) / 2;
     return max_height;
 }
 
 void display_results (float distance, float velocity, float angle_in_degrees, float angle_in_radians, float time, float max_height) {
-    cout << "Distance: " << distance << " meters" << endl;
-    cout << "Velocity: " << velocity << " m/s" << endl;
+    cout << "\n\n" << "Distance: " << distance << " feet" << endl;
+    cout << "Velocity: " << velocity << " f/s" << endl;
     cout << "Angle: " << angle_in_degrees << " degrees" << endl;
     cout << "Angle in radians: " << angle_in_radians << endl;
     cout << "Flight time: " << time << " seconds" << endl;
-    cout << "Maximum height: " << max_height << " meters" << endl;
+    cout << "Maximum height: " << max_height << " feet" << endl;
 }
 
 int main () {
