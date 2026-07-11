@@ -2,7 +2,7 @@
 #include <math.h>
 #include <conio.h>
 #include <stdio.h>
-#define gravity 332.17
+#define gravity 32.17
 
 using namespace std;
 
@@ -35,7 +35,7 @@ float get_flight_time (float distance, float velocity, float angle_in_radians) {
 }
 
 float get_max_height (float velocity, float angle_in_radians, float time) {
-    float max_height = (velocity * sin(angle_in_radians) - (-gravity * pow(time, 2))) / 2;
+    float max_height = velocity * sin(angle_in_radians) * time - (-gravity * pow(time, 2)) / 2;
     return max_height;
 }
 
