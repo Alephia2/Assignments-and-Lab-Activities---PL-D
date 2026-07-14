@@ -53,8 +53,3 @@ float ask_for_m3 () {
     cin >> m3;
     return m3;
 }
-
-
-mq1 (midterm quiz 1), mq2, mq3, lab 1, lab2, lab 3, and
-midterm exam. All inputted data should be from 60% up to 100%. Using
-function.
