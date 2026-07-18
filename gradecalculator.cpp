@@ -117,29 +117,14 @@ float ask_for_exam_total () {
     return exam_total;
 }
 
-float get_average_quiz (float m1, float m2, float m3){
-    float average_quiz = (m1 + m2 + m3) / 3;
-    return average_quiz;
-}
-
-float get_average_lab (float lab1, float lab2, float lab3) {
-    float average_lab = (lab1 + lab2 + lab3);
-    return average_lab;
-}
-
-float get_average_labQuizExam (float average_lab, float average_quiz, float exam) {
-    float average_all = (average_lab + average_quiz + exam) / 3;
-    return average_all;
-}
-
 // get summation
 float get_summation_quiz (float m1, float m2, float m3) {
     float summation_quiz = m1 + m2 + m3;
     return summation_quiz;
 }
 
-float get_summation_lab (float lab1, float lab2, float lab3, float exam) {
-    float summation_lab = lab1 + lab2 + lab3 + exam;
+float get_summation_lab (float lab1, float lab2, float lab3) {
+    float summation_lab = lab1 + lab2 + lab3;
     return summation_lab;
 }
 
@@ -154,8 +139,8 @@ float get_summation_quiz_total (float m1_total, float m2_total, float m3_total) 
     return summation_quiz_total;
 }
 
-float get_summation_lab_total (float lab1_total, float lab2_total, float lab3_total, float exam_total) {
-    float summation_lab_total = lab1_total + lab2_total + lab3_total + exam_total;
+float get_summation_lab_total (float lab1_total, float lab2_total, float lab3_total) {
+    float summation_lab_total = lab1_total + lab2_total + lab3_total;
     return summation_lab_total;
 }
 
@@ -165,32 +150,34 @@ float get_both_summation_total (float summation_quiz_total, float summation_lab_
 }
 
 //logic of both summations
-float get_logic (float summation_both, float summation_both_total) {
-    float final_percentage = summation_both / summation_both_total;
+float get_logic (float summation_both, float exam, float summation_both_total, float exam_total) {
+    float final_percentage = (summation_both + exam) / (summation_both_total + exam_total);
     return final_percentage;
 }
 
-void check_initial (float final_percentage) {
-if (final_percentage <= 0.6) {
+int check_initial (float final_percentage, float x) {
+x = 1;
+    if (final_percentage <= 0.6) {
     cout << "REMARK: 5.00 \n";
-    bool x = true;
-} else if (final_percentage >= 0.1) {
+    x = 0;
+} else if (final_percentage > 1.0) {
     cout << "ERROR: GRADE TOO HIGH\n";
-    bool x = false;
+    x = 0;
 }
+return x;
 }
 
-float get_standing (float average_quiz, float average_lab) {
-    float standing = (0.67 * average_quiz) + (0.33 * average_lab);
+float get_standing (float summation_quiz, float summation_quiz_total, float summation_lab, float summation_lab_total) {
+    float standing = (0.67 * (summation_quiz / summation_quiz_total * 100)) + (0.33 * (summation_lab / summation_lab_total * 100));
     return standing;
 }
 
-float get_grade (float standing, float exam) {
-    float grade = (standing  * 0.67) + (exam * 0.33);
+float get_grade (float standing, float exam, float exam_total) {
+    float grade = (standing  * 0.67) + ((exam / exam_total * 100) * 0.33);
     return grade;
 }
 
-float get_gpa (float grade, string name) {
+void get_gpa (float grade, string name) {
     if (grade >= 98) {
         cout << "---PASSED---\n";
         cout << "Name: " << name << "\n";
@@ -267,27 +254,23 @@ int main () {
     lab1_total = ask_for_lab1_total ();
     lab2 = ask_for_lab2();
     lab2_total = ask_for_lab2_total ();
-    lab3 = ask_for_lab2();
+    lab3 = ask_for_lab3();
     lab3_total = ask_for_lab3_total ();
     exam = ask_for_exam();
     exam_total = ask_for_exam_total();
 
     summation_quiz = get_summation_quiz(m1, m2, m3);
-    summation_lab = get_summation_lab(lab1, lab2, lab3, exam);
+    summation_lab = get_summation_lab(lab1, lab2, lab3);
     summation_both = get_both_summation(summation_quiz, summation_lab);
     summation_quiz_total = get_summation_quiz_total (m1_total, m2_total, m3_total);
-    summation_lab_total = get_summation_lab_total (lab1_total, lab2_total, lab3_total,exam_total);
+    summation_lab_total = get_summation_lab_total (lab1_total, lab2_total, lab3_total);
     summation_both_total = get_both_summation_total (summation_quiz_total, summation_lab_total);
-    final_percentage = get_logic(summation_both, summation_both_total);
+    final_percentage = get_logic(summation_both, exam, summation_both_total, exam_total);
 
-    average_quiz = get_average_quiz(m1, m2, m3);
-    average_lab = get_average_lab (lab1, lab2, lab3);
-    average_all = get_average_labQuizExam(average_lab, average_quiz, exam);
-
-    check_initial (average_all);
-    if (x = true) {
-        float standing = get_standing (average_quiz, average_lab);
-        float grade = get_grade (standing, exam);
+    x = check_initial(final_percentage, x);
+    if (x == 1) {
+        float standing = get_standing (summation_quiz, summation_quiz_total, summation_lab, summation_lab_total);
+        float grade = get_grade (standing, exam, exam_total);
         get_gpa (grade, name);
-    }
+    } 
 }
