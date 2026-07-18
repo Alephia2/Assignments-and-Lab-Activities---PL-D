@@ -10,12 +10,11 @@ void initial_display () {
     cout << "N/A - 0   Student - 1    Senior - 2 \n";
 }
 
-string ask_for_name () {
-    string name;
+void ask_for_name ( char* name) {
     cout << "Name: ";
     cin >> name;
-    return name;
 }
+
 
 int ask_for_status () {
     int status;
@@ -31,15 +30,21 @@ int ask_for_age () {
     return age;
 }
 
-int ask_for_matinee () {
+int ask_for_matinee_time () {
     int matinee;
-    cout << "Is the movie showing before 5pm, matinee (1 = yes, 0 = no): ";
+    cout << "Matinee time (enter int): ";
     cin >> matinee;
     return matinee;
 }
 
+void ask_for_matinee_day (char* matinee_day) {
+    cout << "AM or PM?: ";
+    cin >> matinee_day;
+}
+
+
 int get_after_discount (int status, int age) {
-   int discount;
+   int discount = standard_price;
     if (status == 1 && age < 18) {
         discount = standard_price - 40;
     } else if (status == 2) {
@@ -52,6 +57,15 @@ int get_after_discount (int status, int age) {
     return discount;
 }
 
+void paDisplayPo (char* name, int age, int matinee, char* matinee_day, int discount) {
+    cout << "\n----- TICKET RECEIPT -----\n";
+    cout << "Name: " << name << "\n";
+    cout << "Age: " << age << "\n";
+    cout << "Time: " << matinee << " " << matinee_day << "\n";
+    cout << "Total Price: Php " << discount << "\n";
+    cout << "--------------------------\n\n";
+}
+
 char ask_try () {
     char try_again;
     cout << "Another Transaction? (y/n): ";
@@ -60,26 +74,34 @@ char ask_try () {
 }
 
 int main () {
-    string name;
+    char name[67], matinee_day[3];
     int age, status, discount;
     int matinee;
     char try_again;
     
     start:
-    name = ask_for_name ();
-    age = ask_for_age ();
-    status = ask_for_status ();
-    matinee = ask_for_matinee();
+    initial_display ();
+
+    ask_for_name(name); 
+    age = ask_for_age();
+    status = ask_for_status();
+    matinee = ask_for_matinee_time();
+    ask_for_matinee_day(matinee_day);
 
     discount = get_after_discount (status, age);
 
-    if (matinee == 1 && status == 2) {
+    if ((matinee < 5 && matinee_day[0] == 'P' || matinee_day[0] == 'p') && status == 2) {
         matinee = true;
         discount = discount - 40;
     }
+
+paDisplayPo(name, age, matinee, matinee_day, discount);
 
     try_again = ask_try();
     if (try_again == 'y' || try_again == 'Y') {
         goto start;
     }
+
+delete[] name;
+delete[] matinee_day;
 }
