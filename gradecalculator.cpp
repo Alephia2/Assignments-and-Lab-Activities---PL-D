@@ -2,17 +2,18 @@
 #include <math.h>
 #include <stdio.h>
 #include <conio.h>
+#include <string>
 
 using namespace std;
 
-float initial_display () {
+void initial_display () {
     cout << "---WELCOME TO GRADE CALCULATOR---" << "\n";
     cout << "Format for inputing grades: Score/total" << "\n";
     cout << "SINGLE NAME ONLY" << "\n\n";
 }
 
-char ask_for_name () {
-    char name;
+string ask_for_name () {
+    string name;
     cout << "Enter name of student: ";
     cin >> name;
     return name;
@@ -20,16 +21,30 @@ char ask_for_name () {
 
 float ask_for_m1 () {
     float m1;
-    cout << "Enter Midterm Quiz 1: ";
+    cout << "Score Midterm Quiz 1: ";
     cin >> m1;
     return m1;
 }
 
+float ask_for_m1_total () {
+    float m1_total;
+    cout << "Total Score Midterm Quiz 1: ";
+    cin >> m1_total;
+    return m1_total;
+}
+
 float ask_for_m2 () {
     float m2;
-    cout << "Enter Midterm Quiz 2: ";
+    cout << "Midterm Quiz 2: ";
     cin >> m2;
     return m2;
+}
+
+float ask_for_m2_total () {
+    float m2_total;
+    cout << "Total Midterm Quiz 2: ";
+    cin >> m2_total;
+    return m2_total;
 }
 
 float ask_for_m3 () {
@@ -39,11 +54,25 @@ float ask_for_m3 () {
     return m3;
 }
 
+float ask_for_m3_total () {
+    float m3_total;
+    cout << "Total Midterm Quiz 3: ";
+    cin >> m3_total;
+    return m3_total;
+}
+
 float ask_for_lab1 () {
     float lab1;
-    cout << "Enter lab 1: ";
+    cout << "Score lab 1: ";
     cin >> lab1;
     return lab1;
+}
+
+float ask_for_lab1_total () {
+    float lab1_total;
+    cout << "Total lab 1: ";
+    cin >> lab1_total;
+    return lab1_total;
 }
 
 float ask_for_lab2 () {
@@ -53,11 +82,25 @@ float ask_for_lab2 () {
     return lab2;
 }
 
+float ask_for_lab2_total () {
+    float lab2_total;
+    cout << "Total lab 2: ";
+    cin >> lab2_total;
+    return lab2_total;
+}
+
 float ask_for_lab3 () {
     float lab3;
     cout << "Enter lab 3: ";
     cin >> lab3;
     return lab3;
+}
+
+float ask_for_lab3_total () {
+    float lab3_total;
+    cout << "Total lab 3: ";
+    cin >> lab3_total;
+    return lab3_total;
 }
 
 float ask_for_exam () {
@@ -67,6 +110,12 @@ float ask_for_exam () {
     return exam;
 }
 
+float ask_for_exam_total () {
+    float exam_total;
+    cout << "Score Exam Score: ";
+    cin >> exam_total;
+    return exam_total;
+}
 
 float get_average_quiz (float m1, float m2, float m3){
     float average_quiz = (m1 + m2 + m3) / 3;
@@ -103,7 +152,7 @@ float get_grade (float standing, float exam) {
     return grade;
 }
 
-float get_gpa (float grade, float name) {
+float get_gpa (float grade, string name) {
     if (grade >= 98) {
         cout << "---PASSED---\n";
         cout << "Name: " << name << "\n";
@@ -163,7 +212,8 @@ float get_gpa (float grade, float name) {
 }
 
 int main () {
-    float name, m1, m2, m3, lab1, lab2, lab3, exam, average_quiz, average_lab, average_all, x;
+    string name;
+    float m1, m2, m3, lab1, lab2, lab3, exam, average_quiz, average_lab, average_all, x;
     initial_display ();
     name = ask_for_name();
     m1 = ask_for_m1();
