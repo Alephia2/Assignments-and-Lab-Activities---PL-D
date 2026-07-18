@@ -90,7 +90,7 @@ int main () {
 
     discount = get_after_discount (status, age);
 
-    if ((matinee < 5 && matinee_day[0] == 'P' || matinee_day[0] == 'p') && status == 2) {
+    if (matinee < 5 && (matinee_day[0] == 'P' || matinee_day[0] == 'p') && status == 2) {
         matinee = true;
         discount = discount - 40;
     }
@@ -102,6 +102,5 @@ paDisplayPo(name, age, matinee, matinee_day, discount);
         goto start;
     }
 
-delete[] name;
-delete[] matinee_day;
+    
 }
