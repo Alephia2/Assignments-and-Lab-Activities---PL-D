@@ -235,11 +235,19 @@ void get_gpa (float grade, string name) {
     }
 }
 
+char ask_again (float ans) {
+    cout << "Try Again? (y/n) \n";
+    cin >> ans;
+    return ans;
+}
+
 int main () {
     string name;
     float m1, m1_total, m2, m2_total, m3, m3_total, lab1, lab1_total, lab2, lab2_total, lab3, lab3_total, exam, exam_total;
     float summation_quiz, summation_lab, summation_both, summation_quiz_total, summation_lab_total, summation_both_total, final_percentage, x;
+    int ans;
 
+    start:
     initial_display ();
     name = ask_for_name();
     m1 = ask_for_m1();
@@ -271,4 +279,12 @@ int main () {
         float grade = get_grade (standing, exam, exam_total);
         get_gpa (grade, name);
     } 
+
+    ans = ask_again ();
+    if (ans = "y") {
+        goto start;
+    } else {
+        cout << "Thank you for using the app :)"
+    }
+
 }
