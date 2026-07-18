@@ -112,7 +112,7 @@ float ask_for_exam () {
 
 float ask_for_exam_total () {
     float exam_total;
-    cout << "Total Exam Score: ";
+    cout << "Total Exam Score: \n";
     cin >> exam_total;
     return exam_total;
 }
@@ -158,8 +158,7 @@ float get_logic (float summation_both, float exam, float summation_both_total, f
 int check_initial (float final_percentage, float x) {
 x = 1;
     if (final_percentage <= 0.6) {
-    cout << "REMARK: 5.00 \n";
-    x = 0;
+    x = 1;
 } else if (final_percentage > 1.0) {
     cout << "ERROR: GRADE TOO HIGH\n";
     x = 0;
@@ -239,8 +238,7 @@ void get_gpa (float grade, string name) {
 int main () {
     string name;
     float m1, m1_total, m2, m2_total, m3, m3_total, lab1, lab1_total, lab2, lab2_total, lab3, lab3_total, exam, exam_total;
-    float summation_quiz, summation_lab, summation_both, summation_quiz_total, summation_lab_total, summation_both_total, final_percentage;
-    float average_quiz, average_lab, average_all, x;
+    float summation_quiz, summation_lab, summation_both, summation_quiz_total, summation_lab_total, summation_both_total, final_percentage, x;
 
     initial_display ();
     name = ask_for_name();
