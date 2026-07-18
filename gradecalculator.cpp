@@ -8,7 +8,7 @@ using namespace std;
 float initial_display () {
     cout << "---WELCOME TO GRADE CALCULATOR---" << "\n";
     cout << "Format for inputing grades: Score/total" << "\n";
-    cout << "SINGLE NAME ONLY" << "\n";
+    cout << "SINGLE NAME ONLY" << "\n\n";
 }
 
 char ask_for_name () {
