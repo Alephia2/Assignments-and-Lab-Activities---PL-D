@@ -245,7 +245,7 @@ int main () {
     string name;
     float m1, m1_total, m2, m2_total, m3, m3_total, lab1, lab1_total, lab2, lab2_total, lab3, lab3_total, exam, exam_total;
     float summation_quiz, summation_lab, summation_both, summation_quiz_total, summation_lab_total, summation_both_total, final_percentage, x;
-    int ans;
+    char ans;
 
     start:
     initial_display ();
@@ -280,11 +280,11 @@ int main () {
         get_gpa (grade, name);
     } 
 
-    ans = ask_again ();
-    if (ans = "y") {
+    ans = ask_again (ans);
+    if (ans == 'y') {
         goto start;
     } else {
-        cout << "Thank you for using the app :)"
+        cout << "Thank you for using the app :)";
     }
 
 }
