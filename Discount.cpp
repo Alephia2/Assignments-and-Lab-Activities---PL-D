@@ -1,5 +1,4 @@
 #include <conio.h>
-#include <math.h>
 #include <iostream>
 #include <string>
 #define standard_price 220
@@ -47,6 +46,8 @@ int get_after_discount (int status, int age) {
         discount = standard_price -  60;
     } else if (status == 1) {
         discount = standard_price - 20;
+    } else if (status == 0) {
+        discount = standard_price;
     }
     return discount;
 }
@@ -72,10 +73,13 @@ int main () {
 
     discount = get_after_discount (status, age);
 
-    if (matinee = 1 && status = 2) {
+    if (matinee == 1 && status == 2) {
         matinee = true;
-        discount - 40;
+        discount = discount - 40;
     }
 
-    if (try_again == 'y' || try_again == 'Y')
+    try_again = ask_try();
+    if (try_again == 'y' || try_again == 'Y') {
+        goto start;
+    }
 }
