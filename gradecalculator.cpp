@@ -12,11 +12,9 @@ void initial_display () {
     cout << "SINGLE NAME ONLY" << "\n\n";
 }
 
-string ask_for_name () {
-    string name;
+void ask_for_name (char* name) {
     cout << "Enter name of student: ";
     cin >> name;
-    return name;
 }
 
 float ask_for_m1 () {
@@ -242,14 +240,14 @@ char ask_again (float ans) {
 }
 
 int main () {
-    string name;
+    char name[67];
     float m1, m1_total, m2, m2_total, m3, m3_total, lab1, lab1_total, lab2, lab2_total, lab3, lab3_total, exam, exam_total;
     float summation_quiz, summation_lab, summation_both, summation_quiz_total, summation_lab_total, summation_both_total, final_percentage, x;
     char ans;
 
     start:
     initial_display ();
-    name = ask_for_name();
+    ask_for_name(name);
     m1 = ask_for_m1();
     m1_total = ask_for_m1_total ();
     m2 = ask_for_m2();
