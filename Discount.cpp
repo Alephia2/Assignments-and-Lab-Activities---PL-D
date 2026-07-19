@@ -1,53 +1,54 @@
 #include <conio.h>
 #include <iostream>
+#include <stdio.h>
 #include <string>
 #define standard_price 220
 
 using namespace std;
 
 void initial_display () {
-    cout << "--Welcome!--\n";
-    cout << "N/A - 0   Student - 1    Senior - 2 \n";
+    printf ("--Welcome!--\n");
+    printf ("N/A - 0   Student - 1 \n");
 }
 
 void ask_for_name ( char* name) {
-    cout << "Name: ";
-    cin >> name;
+    printf ("Name: ");
+    scanf ("%67s", name);
 }
 
 
 int ask_for_status () {
     int status;
-    cout << "Plese Enter based on the discount: ";
-    cin >> status;
+    printf ("Plese Enter if you're a student: ");
+    scanf ("%d", &status);
     return status;
 }
 
 int ask_for_age () {
     int age;
-    cout << "Age: ";
-    cin >> age;
+    printf ("Age: ");
+    scanf ("%3d", &age);
     return age;
 }
 
 int ask_for_matinee_time () {
     int matinee;
-    cout << "Matinee time (enter int): ";
-    cin >> matinee;
+    printf ("Matinee time (enter int): ");
+    scanf ("%d", &matinee);
     return matinee;
 }
 
 void ask_for_matinee_day (char* matinee_day) {
-    cout << "AM or PM?: ";
-    cin >> matinee_day;
+    printf ("AM or PM?: ");
+    scanf (" %2s", matinee_day);
 }
 
 
 int get_after_discount (int status, int age) {
-   int discount = standard_price;
+    int discount = standard_price;
     if (status == 1 && age < 18) {
         discount = standard_price - 40;
-    } else if (status == 2) {
+    } else if (age >= 60) {
         discount = standard_price -  60;
     } else if (status == 1) {
         discount = standard_price - 20;
@@ -58,18 +59,18 @@ int get_after_discount (int status, int age) {
 }
 
 void paDisplayPo (char* name, int age, int matinee, char* matinee_day, int discount) {
-    cout << "\n----- TICKET RECEIPT -----\n";
-    cout << "Name: " << name << "\n";
-    cout << "Age: " << age << "\n";
-    cout << "Time: " << matinee << " " << matinee_day << "\n";
-    cout << "Total Price: Php " << discount << "\n";
-    cout << "--------------------------\n\n";
+    printf("\n----- TICKET RECEIPT -----\n");
+    printf("Name: %s\n", name);
+    printf("Age: %d\n", age);
+    printf("Time: %d %s\n", matinee, matinee_day);
+    printf("Total Price: Php %d\n", discount);
+    printf("--------------------------\n\n");
 }
 
 char ask_try () {
     char try_again;
-    cout << "Another Transaction? (y/n): ";
-    cin >> try_again;
+    printf ("another transaction (y/n): ");
+    scanf (" %c", &try_again);
     return try_again;
 }
 
@@ -90,8 +91,7 @@ int main () {
 
     discount = get_after_discount (status, age);
 
-    if (matinee < 5 && (matinee_day[0] == 'P' || matinee_day[0] == 'p') && (!status == 2)) {
-        matinee = true;
+    if (matinee < 5 && (matinee_day[0] == 'P' || matinee_day[0] == 'p') && (age <= 60)) {
         discount = discount - 40;
     }
 
