@@ -2,13 +2,12 @@
 #include <math.h>
 #include <stdio.h>
 #include <conio.h>
-#include <string>
 
 using namespace std;
 
 void initial_display () {
     cout << "---WELCOME TO GRADE CALCULATOR---" << "\n";
-    cout << "Format for inputing grades: Score/total" << "\n";
+    cout << "Format for inputing grades: Score THEN Total Score" << "\n";
     cout << "SINGLE NAME ONLY" << "\n\n";
 }
 
@@ -110,7 +109,7 @@ float ask_for_exam () {
 
 float ask_for_exam_total () {
     float exam_total;
-    cout << "Total Exam Score: \n";
+    cout << "Total Exam Score: ";
     cin >> exam_total;
     return exam_total;
 }
@@ -174,67 +173,68 @@ float get_grade (float standing, float exam, float exam_total) {
     return grade;
 }
 
-void get_gpa (float grade, string name) {
+void get_gpa (float grade, char* name) {
     if (grade >= 98) {
         cout << "---PASSED---\n";
         cout << "Name: " << name << "\n";
         cout << "Remark: 1.00 \n";
-        cout << "Grade: " << grade;
+        cout << "Grade: " << grade << "\n";
     } else if (grade >=95) {
         cout << "---PASSED---\n";
         cout << "Name: " << name << "\n";
         cout << "Remark: 1.25 \n";
-        cout << "Grade: " << grade;
+        cout << "Grade: " << grade << "\n";
     } else if (grade >=92) {
         cout << "---PASSED---\n";
         cout << "Name: " << name << "\n";
         cout << "Remark: 1.50 \n";
-        cout << "Grade: " << grade;
+        cout << "Grade: " << grade << "\n";
     } else if (grade >= 89) {
         cout << "---PASSED---\n";
         cout << "Name: " << name << "\n";
         cout << "Remark: 1.75 \n";
-        cout << "Grade: " << grade;
+        cout << "Grade: " << grade << "\n";
     } else if (grade >= 85) {
         cout << "---PASSED---\n";
         cout << "Name: " << name << "\n";
         cout << "Remark: 2.00 \n";
-        cout << "Grade: " << grade;
+        cout << "Grade: " << grade << "\n";
     } else if (grade >= 83) {
         cout << "---PASSED---\n";
         cout << "Name: " << name << "\n";
         cout << "Remark: 2.25 \n";
-        cout << "Grade: " << grade;
+        cout << "Grade: " << grade << "\n";
     } else if (grade >= 80) {
         cout << "---PASSED---\n";
         cout << "Name: " << name << "\n";
         cout << "Remark: 2.50 \n";
-        cout << "Grade: " << grade;
+        cout << "Grade: " << grade << "\n";
     } else if (grade >= 77) {
         cout << "---PASSED---\n";
         cout << "Name: " << name << "\n";
         cout << "Remark: 2.75 \n";
-        cout << "Grade: " << grade;
+        cout << "Grade: " << grade << "\n";
     } else if (grade >= 75) {
         cout << "---FAILED---\n";
         cout << "Name: " << name << "\n";
         cout << "Remark: 3.00 \n";
-        cout << "Grade: " << grade;
+        cout << "Grade: " << grade << "\n";
     } else if (grade >= 72) {
         cout << "---FAILED---\n";
         cout << "Name: " << name << "\n";
         cout << "Remark: 4.00 \n";
-        cout << "Grade: " << grade;
+        cout << "Grade: " << grade << "\n";
     } else {
         cout << "---FAILED---\n";
         cout << "Name: " << name << "\n";
         cout << "Remark: 5.00 \n";
-        cout << "Grade: " << grade;
+        cout << "Grade:" << grade << "\n";
     }
 }
 
-char ask_again (float ans) {
-    cout << "Try Again? (y/n) \n";
+char ask_again () {
+    char ans;
+    cout << "\n\nTry Again? (y/n): ";
     cin >> ans;
     return ans;
 }
@@ -278,8 +278,8 @@ int main () {
         get_gpa (grade, name);
     } 
 
-    ans = ask_again (ans);
-    if (ans == 'y') {
+    ans = ask_again ();
+    if (ans == 'y' || ans == 'Y') {
         goto start;
     } else {
         cout << "Thank you for using the app :)";
