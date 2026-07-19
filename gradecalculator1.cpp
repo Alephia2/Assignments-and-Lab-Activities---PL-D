@@ -21,7 +21,8 @@ float ask_for_m1 () {
     cout << "Score Midterm Quiz 1: ";
     cin >> m1;
     return m1;
-}
+} 
+
 
 float ask_for_m1_total () {
     float m1_total;
@@ -175,60 +176,60 @@ float get_grade (float standing, float exam, float exam_total) {
 
 void get_gpa (float grade, char* name) {
     if (grade >= 98) {
-        cout << "---PASSED---\n";
-        cout << "Name: " << name << "\n";
-        cout << "Remark: 1.00 \n";
-        cout << "Grade: " << grade << "\n";
+	cout << "---PASSED---\n";
+	cout << "Name: " << name << "\n";
+	cout << "Remark: 1.00 \n";
+	cout << "Grade: " << grade << "\n";
     } else if (grade >=95) {
-        cout << "---PASSED---\n";
-        cout << "Name: " << name << "\n";
-        cout << "Remark: 1.25 \n";
-        cout << "Grade: " << grade << "\n";
+	cout << "---PASSED---\n";
+	cout << "Name: " << name << "\n";
+	cout << "Remark: 1.25 \n";
+	cout << "Grade: " << grade << "\n";
     } else if (grade >=92) {
-        cout << "---PASSED---\n";
-        cout << "Name: " << name << "\n";
-        cout << "Remark: 1.50 \n";
-        cout << "Grade: " << grade << "\n";
+	cout << "---PASSED---\n";
+	cout << "Name: " << name << "\n";
+	cout << "Remark: 1.50 \n";
+	cout << "Grade: " << grade << "\n";
     } else if (grade >= 89) {
-        cout << "---PASSED---\n";
-        cout << "Name: " << name << "\n";
-        cout << "Remark: 1.75 \n";
-        cout << "Grade: " << grade << "\n";
+	cout << "---PASSED---\n";
+	cout << "Name: " << name << "\n";
+	cout << "Remark: 1.75 \n";
+	cout << "Grade: " << grade << "\n";
     } else if (grade >= 85) {
-        cout << "---PASSED---\n";
-        cout << "Name: " << name << "\n";
-        cout << "Remark: 2.00 \n";
-        cout << "Grade: " << grade << "\n";
+	cout << "---PASSED---\n";
+	cout << "Name: " << name << "\n";
+	cout << "Remark: 2.00 \n";
+	cout << "Grade: " << grade << "\n";
     } else if (grade >= 83) {
-        cout << "---PASSED---\n";
-        cout << "Name: " << name << "\n";
-        cout << "Remark: 2.25 \n";
-        cout << "Grade: " << grade << "\n";
+	cout << "---PASSED---\n";
+	cout << "Name: " << name << "\n";
+	cout << "Remark: 2.25 \n";
+	cout << "Grade: " << grade << "\n";
     } else if (grade >= 80) {
-        cout << "---PASSED---\n";
-        cout << "Name: " << name << "\n";
-        cout << "Remark: 2.50 \n";
-        cout << "Grade: " << grade << "\n";
+	cout << "---PASSED---\n";
+	cout << "Name: " << name << "\n";
+	cout << "Remark: 2.50 \n";
+	cout << "Grade: " << grade << "\n";
     } else if (grade >= 77) {
-        cout << "---PASSED---\n";
-        cout << "Name: " << name << "\n";
-        cout << "Remark: 2.75 \n";
-        cout << "Grade: " << grade << "\n";
+	cout << "---PASSED---\n";
+	cout << "Name: " << name << "\n";
+	cout << "Remark: 2.75 \n";
+	cout << "Grade: " << grade << "\n";
     } else if (grade >= 75) {
-        cout << "---FAILED---\n";
-        cout << "Name: " << name << "\n";
-        cout << "Remark: 3.00 \n";
-        cout << "Grade: " << grade << "\n";
+	cout << "---FAILED---\n";
+	cout << "Name: " << name << "\n";
+	cout << "Remark: 3.00 \n";
+	cout << "Grade: " << grade << "\n";
     } else if (grade >= 72) {
-        cout << "---FAILED---\n";
-        cout << "Name: " << name << "\n";
-        cout << "Remark: 4.00 \n";
-        cout << "Grade: " << grade << "\n";
+	cout << "---FAILED---\n";
+	cout << "Name: " << name << "\n";
+	cout << "Remark: 4.00 \n";
+	cout << "Grade: " << grade << "\n";
     } else {
-        cout << "---FAILED---\n";
-        cout << "Name: " << name << "\n";
-        cout << "Remark: 5.00 \n";
-        cout << "Grade:" << grade << "\n";
+	cout << "---FAILED---\n";
+	cout << "Name: " << name << "\n";
+	cout << "Remark: 5.00 \n";
+	cout << "Grade:" << grade << "\n";
     }
 }
 
@@ -273,16 +274,18 @@ int main () {
 
     x = check_initial(final_percentage, x);
     if (x == 1) {
-        float standing = get_standing (summation_quiz, summation_quiz_total, summation_lab, summation_lab_total);
-        float grade = get_grade (standing, exam, exam_total);
-        get_gpa (grade, name);
-    } 
+	float standing = get_standing (summation_quiz, summation_quiz_total, summation_lab, summation_lab_total);
+	float grade = get_grade (standing, exam, exam_total);
+	get_gpa (grade, name);
+    }
 
     ans = ask_again ();
     if (ans == 'y' || ans == 'Y') {
-        goto start;
+	goto start;
     } else {
-        cout << "Thank you for using the app :)";
+	cout << "Thank you for using the app :)";
     }
 
+  getch();
+  return 0;
 }
